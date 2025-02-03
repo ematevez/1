@@ -7,9 +7,10 @@ st.title("🤖 Chat con OpenRouter (Solución de Errores)")
 
 # URL de la API de OpenRouter
 API_URL = "https://openrouter.ai/api/v1/chat/completions"
-
+API_KEY = "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"
 # Asegúrate de que tu API Key esté correcta
-HEADERS = {"Authorization": "Bearer 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"}
+#HEADERS = {"Authorization": "Bearer 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"}
+HEADERS = {"Authorization": f"Bearer {API_KEY}"}
 
 # Historial de la conversación
 if "messages" not in st.session_state:
