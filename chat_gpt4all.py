@@ -1,8 +1,11 @@
+
+#HEADERS = {"Authorization": "Bearer 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"}  # Reemplaza con tu API Key de Hugging Face
+
 import streamlit as st
 import requests
 
 # Configurar API de Hugging Face
-API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct"
+API_URL = "https://api-inference.huggingface.co/models/tiiuae/falcon-7b-instruct"  # Cambia el modelo si es necesario
 HEADERS = {"Authorization": "Bearer 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"}  # Reemplaza con tu API Key de Hugging Face
 
 st.title("🤖 Chat con Hugging Face")
@@ -26,10 +29,13 @@ if user_input:
         with st.spinner("Pensando..."):
             response = requests.post(API_URL, headers=HEADERS, json={"inputs": user_input})
 
+            # 📌 Debug: Imprimir la respuesta JSON completa
+            st.write("🔍 Respuesta JSON:", response.json())
+
             try:
-                reply = response.json()[0]["generated_text"]
-            except KeyError:
-                reply = "❌ Error: No se encontró una respuesta válida."
+                reply = response.json()[0]["generated_text"]  # Extraer respuesta del modelo
+            except (KeyError, IndexError):
+                reply = "❌ Error: No se encontró una respuesta válida en la API."
 
             st.markdown(reply)
             st.session_state.messages.append({"role": "assistant", "content": reply})
