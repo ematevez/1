@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 
-st.title("🤖 Chat con OpenRouter (Gratis)")
+st.title("🤖 Chat con OpenRouter (Grati)")
 
 API_URL = "https://openrouter.ai/api/v1/chat/completions"
 HEADERS = {"Authorization": "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"}
