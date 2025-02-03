@@ -37,9 +37,13 @@ if user_input:
             st.write("🔍 Respuesta JSON:", response.json())
 
             try:
-                reply = response.json()[0]["generated_text"]  # Extraer respuesta del modelo
+                # 📌 Extraer solo la parte relevante de la respuesta
+                raw_reply = response.json()[0]["generated_text"]
+                result = raw_reply.split("\n")[-1].strip()  # Extrae solo el resultado numérico
+                formatted_reply = f"La respuesta es:  {result}"  # Espacio extra después de ":"
             except (KeyError, IndexError):
-                reply = "❌ Error: No se encontró una respuesta válida en la API."
+                formatted_reply = "❌ No se encontró una respuesta válida."
+
 
             st.markdown(reply)
             st.session_state.messages.append({"role": "assistant", "content": reply})
