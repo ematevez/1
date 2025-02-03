@@ -1,12 +1,13 @@
 
 #HEADERS = {"Authorization": "Bearer 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"}  # Reemplaza con tu API Key de Hugging Face
+#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
 
 import streamlit as st
 import requests
 
 # Configurar API de Hugging Face
 API_URL = "https://api-inference.huggingface.co/models/tiiuae/falcon-7b-instruct"  # Cambia el modelo si es necesario
-HEADERS = {"Authorization": "Bearer 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"}  # Reemplaza con tu API Key de Hugging Face
+HEADERS = {"Authorization": "Bearer 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"}  # Reemplaza con tu API Key de Hugging Face
 
 st.title("🤖 Chat con Hugging Face")
 
