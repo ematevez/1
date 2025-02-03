@@ -3,7 +3,7 @@ import streamlit as st
 import requests
 
 # Título de la app
-st.title("🤖 Chat con OpenRouter (Solución de Errores)")
+st.title("🤖 Chat con OpenRouter (So)")
 
 # URL de la API de OpenRouter
 API_URL = "https://openrouter.ai/api/v1/chat/completions"
