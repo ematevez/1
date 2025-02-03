@@ -1,12 +1,12 @@
-from gpt4all import GPT4All
 import streamlit as st
+import requests
 
-# Cargar un modelo más pequeño como Mistral-7B o TinyLlama
-model = GPT4All("mistral-7B.Q4_0.gguf")  # O prueba con TinyLlama
+st.title("🤖 Chat con OpenRouter (Gratis)")
 
-st.title("🤖 Chat con GPT4All (Optimizado para Streamlit Cloud)")
+API_URL = "https://openrouter.ai/api/v1/chat/completions"
+HEADERS = {"Authorization": "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"}
 
-# Historial de conversación
+# Historial de mensajes
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
@@ -19,17 +19,19 @@ for message in st.session_state.messages:
 user_input = st.chat_input("Escribe tu mensaje aquí...")
 
 if user_input:
-    # Guardar mensaje del usuario
     st.session_state.messages.append({"role": "user", "content": user_input})
     with st.chat_message("user"):
         st.markdown(user_input)
 
-    # Generar respuesta con GPT4All
     with st.chat_message("assistant"):
         with st.spinner("Pensando..."):
-            with model.chat_session():
-                response = model.generate(user_input)
-            st.markdown(response)
+            response = requests.post(API_URL, json={
+                "model": "mistralai/mistral-7b-instruct",
+                "messages": st.session_state.messages
+            }, headers=HEADERS)
 
-    # Guardar la respuesta en el historial
-    st.session_state.messages.append({"role": "assistant", "content": response})
+            reply = response.json()["choices"][0]["message"]["content"]
+            st.markdown(reply)
+
+    st.session_state.messages.append({"role": "assistant", "content": reply})
+
