@@ -1,2 +1,4 @@
 streamlit
 gpt4all
+google-generativeai 
+babyagi
