@@ -21,6 +21,10 @@ def generar_cuento(caracteristica1, caracteristica2, caracteristica3, caracteris
 # Interfaz con Streamlit
 st.title("Generador de Cuentos con IA ✨📖")
 
+# Inicializar variables en session_state si no existen
+for key in ["desc1", "desc2", "desc3", "desc4"]:
+    if key not in st.session_state:
+        st.session_state[key] = ""
 
 # Inputs para las características
 desc1 = st.text_input("Característica 1", key="desc1")
@@ -36,9 +40,11 @@ if st.button("Generar Cuento 📝"):
     else:
         st.warning("Por favor, completa las 4 características antes de generar el cuento.")
 
-if st.button("Borrar Todo 🗑️"):
-    st.session_state.desc1 = ""
-    st.session_state.desc2 = ""
-    st.session_state.desc3 = ""
-    st.session_state.desc4 = ""
+if st.button("Borrar Campos ❌"):
+    st.session_state["desc1"] = ""
+    st.session_state["desc2"] = ""
+    st.session_state["desc3"] = ""
+    st.session_state["desc4"] = ""
+    st.experimental_rerun()
+
 
