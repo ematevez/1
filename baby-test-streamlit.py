@@ -21,11 +21,12 @@ def generar_cuento(caracteristica1, caracteristica2, caracteristica3, caracteris
 # Interfaz con Streamlit
 st.title("Generador de Cuentos con IA ✨📖")
 
+
 # Inputs para las características
-desc1 = st.text_input("Característica 1")
-desc2 = st.text_input("Característica 2")
-desc3 = st.text_input("Característica 3")
-desc4 = st.text_input("Característica 4")
+desc1 = st.text_input("Característica 1", key="desc1")
+desc2 = st.text_input("Característica 2", key="desc2")
+desc3 = st.text_input("Característica 3", key="desc3")
+desc4 = st.text_input("Característica 4", key="desc4")
 
 if st.button("Generar Cuento 📝"):
     if desc1 and desc2 and desc3 and desc4:
@@ -34,3 +35,9 @@ if st.button("Generar Cuento 📝"):
         st.write(cuento)
     else:
         st.warning("Por favor, completa las 4 características antes de generar el cuento.")
+
+if st.button("Borrar Todo 🗑️"):
+    st.session_state.desc1 = ""
+    st.session_state.desc2 = ""
+    st.session_state.desc3 = ""
+    st.session_state.desc4 = ""
