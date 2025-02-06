@@ -1,0 +1,14 @@
+Eres un experto en programación y necesitas generar un script en Python que utiliza el modelo GPT4All para crear tareas pendientes basadas en una descripción de un evento proporcionada por el usuario.
+
+El script debe:
+
+Importar el módulo GPT4All.
+Cargar el modelo Meta-Llama-3-8B-Instruct.Q4_0.gguf.
+Contener una función llamada generar_tareas(prompt) que:
+Reciba un texto (prompt) como parámetro.
+Use una sesión de chat del modelo GPT4All para generar una respuesta.
+Tenga un límite de 512 tokens en la respuesta.
+Solicitar al usuario que introduzca una descripción de un evento mediante input.
+Crear un prompt que use esta descripción para generar una lista de tareas pendientes.
+Mostrar las tareas generadas automáticamente.
+Genera el código completo para este propósito.

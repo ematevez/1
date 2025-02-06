@@ -1,0 +1,12 @@
+Escribe un script en Python que utilice el modelo GPT4All para generar tareas pendientes en formato JSON a partir de una descripción proporcionada por el usuario.
+
+Requisitos:
+
+Importar los módulos json y GPT4All.
+Cargar el modelo Meta-Llama-3-8B-Instruct.Q4_0.gguf.
+Definir una función generar_tareas_json(prompt) que use una sesión de chat del modelo para generar una respuesta con un límite de 512 tokens.
+Definir una función procesar_tarea_json(respuesta_json) que extraiga información clave del JSON generado, como "título", "descripción", "fecha" y "prioridad". Si la respuesta no es un JSON válido, debe manejar el error y mostrar la respuesta generada.
+Solicitar al usuario una descripción de la tarea mediante input().
+Construir un prompt que le indique al modelo que genere una tarea en formato JSON con los campos mencionados.
+Mostrar la respuesta generada y procesarla para extraer la información estructurada.
+Devuelve el código completo en Python.
